@@ -5,7 +5,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from tqdm import tqdm
 
 # --- Step 1: Ask for a YouTube link ---
-url = input("Paste a YouTube video URL: ").strip()
+import sys
+
+if len(sys.argv) > 1:
+    url = sys.argv[1]
+else:
+    url = input("Paste a YouTube video URL: ")
+    if not url.strip():
+        print("No URL entered. Exiting program.")
+        sys.exit(1)
 
 if not url:
     print("No URL entered. Exiting program.")
